@@ -1,0 +1,3 @@
+- insert:
+    - id: neural-glass
+      name: '@local/neural-glass'
