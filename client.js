@@ -1590,15 +1590,17 @@ window.__ModuleLoader__.load({
       let tokenDispose = null
       let groundTag = null
       let mounted = false
-      const theme = ctx.get('theme')
+      const themeService = () => ctx.get('theme')
 
       function currentPreference() {
+        const theme = themeService()
         if (theme === undefined || typeof theme.getTheme !== 'function') return null
         const snapshot = theme.getTheme()
         return snapshot === null || snapshot.preference === undefined ? null : String(snapshot.preference)
       }
 
       function currentScheme() {
+        const theme = themeService()
         if (theme === undefined || typeof theme.getTheme !== 'function') return 'dark'
         const snapshot = theme.getTheme()
         return snapshot !== null && snapshot.active !== undefined ? snapshot.active.colorScheme : 'dark'
@@ -1638,6 +1640,7 @@ window.__ModuleLoader__.load({
       /** Remember the user's preference, then switch to the dark theme the skin is drawn for. */
       function ensureDarkBase() {
         if (respectChoice) return
+        const theme = themeService()
         if (theme === undefined || typeof theme.getTheme !== 'function' || typeof theme.setTheme !== 'function') return
         const snapshot = theme.getTheme()
         if (snapshot === null || snapshot.active === undefined) return
@@ -1658,10 +1661,11 @@ window.__ModuleLoader__.load({
       }
 
       function restoreThemeBase() {
+        const theme = themeService()
         // Survives a reload: the forced preference was remembered in storage.
         const preference = restoreTheme === null ? readStoredTheme() : restoreTheme
         restoreTheme = null
-        if (preference === null) return
+        if (preference === null || theme === undefined || typeof theme.setTheme !== 'function') return
         try {
           theme.setTheme(preference)
           clearStoredTheme()
@@ -1671,6 +1675,7 @@ window.__ModuleLoader__.load({
       }
 
       function applyTokens(glass) {
+        const theme = themeService()
         if (theme === undefined || typeof theme.overrideTokens !== 'function') return
         if (appliedGlass === glass) return
         appliedGlass = glass
@@ -1686,6 +1691,9 @@ window.__ModuleLoader__.load({
 
       function mount() {
         if (mounted) return
+        // The client can boot while <head> is still being parsed; a canvas inserted
+        // then never paints, so wait for a real body.
+        if (document.body === null) return
         mounted = true
         ensureDarkBase()
         groundTag = document.createElement('style')
@@ -1729,6 +1737,7 @@ window.__ModuleLoader__.load({
           unmount()
           return
         }
+        if (document.body === null) return
         mount()
         ensureDarkBase()
         if (scene !== null) {
@@ -1739,8 +1748,7 @@ window.__ModuleLoader__.load({
         applyTokens(state.glass)
       }
 
-      return {
-        start() {
+      function startNow() {
           sync()
           initialPreference = currentPreference()
           const offTheme = ctx.on('theme/change', (snapshot) => {
@@ -1755,12 +1763,42 @@ window.__ModuleLoader__.load({
               respectChoice = true
             }
             ensureDarkBase()
+            // The theme service may arrive after the first mount in an early boot.
+            if (!mounted || scene === null || tokenDispose === null) sync()
           })
           const offStore = store.subscribe(() => { sync() })
+          // Safety net for an early boot that missed the mount: heal on the first
+          // visible frame or focus instead of asking for a plugin restart.
+          const onShow = () => {
+            if (!document.hidden && store.get().enabled) sync()
+          }
+          document.addEventListener('visibilitychange', onShow)
+          window.addEventListener('focus', onShow)
           return () => {
+            document.removeEventListener('visibilitychange', onShow)
+            window.removeEventListener('focus', onShow)
             offTheme()
             offStore()
             unmount()
+          }
+      }
+
+      return {
+        start() {
+          let disposeNow = null
+          const begin = () => {
+            if (disposeNow !== null) return
+            disposeNow = startNow()
+          }
+          if (document.body !== null) begin()
+          else document.addEventListener('DOMContentLoaded', begin, { once: true })
+          return () => {
+            document.removeEventListener('DOMContentLoaded', begin)
+            if (disposeNow !== null) {
+              const dispose = disposeNow
+              disposeNow = null
+              dispose()
+            }
           }
         },
         sync,
@@ -2504,7 +2542,7 @@ window.__ModuleLoader__.load({
     }
 
     return {
-      inject: ['slots'],
+      inject: ['slots', 'theme'],
       /**
        * Mount the skin and its settings page.
        * @param {object} ctx - Client Cordis context.
