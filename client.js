@@ -2400,14 +2400,14 @@ window.__ModuleLoader__.load({
         const [panelOpen, setPanelOpen] = useState(panel.get())
         useEffect(() => store.subscribe(() => setState(store.get())), [])
         useEffect(() => panel.subscribe(() => setPanelOpen(panel.get())), [])
-        return state
+        return [state, panelOpen]
       }
 
       const sparkIcon = h('svg', { viewBox: '0 0 16 16', width: 13, height: 13, 'aria-hidden': 'true' },
         h('path', { d: 'M8 2.2l1.5 4.1 4.1 1.5-4.1 1.5L8 13.4 6.5 9.3 2.4 7.8l4.1-1.5z', fill: 'currentColor' }))
 
       return function NeuralGlassComposerControls() {
-        const state = useSettings()
+        const [state, panelOpen] = useSettings()
         const density = glowPercentOf(state.brightness)
         return h('div', { className: 'ng-inline' },
           h('input', {
