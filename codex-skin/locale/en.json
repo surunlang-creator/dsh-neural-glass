@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Codex Neural Skin",
+    "description": "A mint-green glass skin for the Harness Web UI over one continuous data-flow animation with two scenes: a transformer stream (tokens, Q/K/V, causal attention, circular MLP neurons, output) and a CNN image pipeline (real 3×3 convolution, ReLU, 2×2 max pooling, flatten, 6→9→3 classifier). Opens from the star in the composer row or at the sidebar foot: scene switch, three presets, interface transparency, background glow, glass blur, animation speed, live-background and pause switches, dark base, reset. Colors and numbers are illustrative demo data, not model telemetry. Transparency means in-app panels show the canvas; it does not make the OS window transparent. Disabling removes the canvas, glass layer and theme override and restores your previous theme; settings stay in localStorage.",
+    "detail": "docs/DETAIL.md"
+  }
+}

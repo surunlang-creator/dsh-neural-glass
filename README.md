@@ -90,3 +90,12 @@ A skin plugin for DeepSeek Harness: translucent glass panels over one continuous
 ## License
 
 [MIT](LICENSE)
+
+## 第二个皮肤：Codex Neural Skin（`codex-skin/`）
+
+仓库里还有一个独立插件 **Codex Neural Skin**（薄荷绿玻璃 + Transformer / CNN 双场景光流 + 浮动设置面板），
+源码在本目录的 `codex-skin/` 下，安装时把 `codex-skin/` 这个文件夹作为插件目录添加即可。
+
+- 入口：输入框模型名左边 / 侧边栏左下角的 ✦ 星形按钮
+- 面板：场景（自动 / Transformer / CNN）、专注·平衡·沉浸、界面透明度、背景光效、玻璃模糊、动画速度、启用/暂停、深色底座、恢复默认
+- 两个皮肤**不要同时启用**（会叠两层画布），二选一

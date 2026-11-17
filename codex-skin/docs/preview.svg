@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" viewBox="0 0 640 300" role="img" aria-label="Mint glass panels over a transformer and CNN data-flow scene">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#0d1a1e"/><stop offset="1" stop-color="#060b0f"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f1f24" stop-opacity="0.7"/><stop offset="1" stop-color="#0f1f24" stop-opacity="0.92"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#b9eed7" stop-opacity="0.5"/><stop offset="1" stop-color="#b9eed7" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="frame"><rect x="16" y="16" width="608" height="268" rx="18"/></clipPath>
+  </defs>
+  <rect x="16" y="16" width="608" height="268" rx="18" fill="url(#bg)"/>
+  <g clip-path="url(#frame)">
+    <g stroke="#8fb9a8" stroke-opacity="0.18">
+      <path d="M16 76H624M16 136H624M16 196H624M16 256H624"/>
+      <path d="M96 16V284M192 16V284M288 16V284M384 16V284M480 16V284M576 16V284"/>
+    </g>
+    <circle cx="420" cy="120" r="120" fill="url(#glow)" opacity="0.5"/>
+
+    <g fill="none" stroke="#b9eed7" stroke-opacity="0.4" stroke-width="1.2">
+      <path d="M60 62 C96 118, 180 118, 216 62"/>
+      <path d="M78 62 C114 138, 180 138, 216 62" stroke-opacity="0.26"/>
+    </g>
+    <g fill="#0d1a1f" stroke="#b9eed7" stroke-opacity="0.5">
+      <rect x="52" y="38" width="32" height="18" rx="4"/><rect x="94" y="38" width="32" height="18" rx="4"/>
+      <rect x="136" y="38" width="32" height="18" rx="4"/><rect x="178" y="38" width="32" height="18" rx="4"/>
+    </g>
+    <g fill="#b9eed7" fill-opacity="0.55">
+      <rect x="58" y="44" width="19" height="2.4" rx="1.2"/><rect x="100" y="44" width="17" height="2.4" rx="1.2"/>
+      <rect x="142" y="44" width="20" height="2.4" rx="1.2"/><rect x="184" y="44" width="15" height="2.4" rx="1.2"/>
+    </g>
+
+    <g fill="#0c181c" stroke-width="1">
+      <rect x="52" y="118" width="44" height="26" rx="3" stroke="#d8c48a" stroke-opacity="0.7"/>
+      <rect x="104" y="118" width="44" height="26" rx="3" stroke="#6fd3b8" stroke-opacity="0.7"/>
+      <rect x="156" y="118" width="44" height="26" rx="3" stroke="#e0a08f" stroke-opacity="0.7"/>
+    </g>
+    <g fill-opacity="0.6">
+      <rect x="58" y="124" width="6" height="2" fill="#d8c48a"/><rect x="68" y="124" width="6" height="2" fill="#d8c48a"/>
+      <rect x="110" y="124" width="6" height="2" fill="#6fd3b8"/><rect x="120" y="124" width="7" height="2" fill="#6fd3b8"/>
+      <rect x="162" y="124" width="6" height="2" fill="#e0a08f"/><rect x="172" y="124" width="6" height="2" fill="#e0a08f"/>
+    </g>
+
+    <g>
+      <rect x="262" y="72" width="96" height="40" rx="6" fill="#0c181c" stroke="#b9eed7" stroke-opacity="0.55"/>
+      <rect x="272" y="88" width="54" height="4" rx="2" fill="#b9eed7" fill-opacity="0.45"/>
+      <rect x="334" y="86" width="4" height="8" rx="2" fill="#b9eed7" fill-opacity="0.7"/>
+      <rect x="262" y="124" width="96" height="40" rx="6" fill="#0c181c" stroke="#6fd3b8" stroke-opacity="0.45"/>
+      <rect x="272" y="140" width="42" height="4" rx="2" fill="#6fd3b8" fill-opacity="0.4"/>
+      <path d="M262 72 h-6 a4 4 0 0 0 -4 4 v76 a4 4 0 0 0 4 4 h6" fill="none" stroke="#5d7f74" stroke-opacity="0.6"/>
+    </g>
+
+    <g stroke="#5d7f74" stroke-opacity="0.5" stroke-width="0.7" fill="none">
+      <path d="M396 200 L418 182 M396 200 L418 196 M396 200 L418 210 M396 200 L418 224 M396 210 L418 182 M396 210 L418 196 M396 210 L418 210 M396 210 L418 224 M396 220 L418 182 M396 220 L418 196 M396 220 L418 210 M396 220 L418 224"/>
+      <path d="M418 182 L440 196 M418 182 L440 210 M418 196 L440 196 M418 196 L440 210 M418 210 L440 196 M418 210 L440 210 M418 224 L440 196 M418 224 L440 210"/>
+      <path d="M440 196 L462 196 M440 196 L462 204 M440 196 L462 212 M440 204 L462 196 M440 204 L462 204 M440 204 L462 212 M440 212 L462 196 M440 212 L462 204 M440 212 L462 212"/>
+    </g>
+    <g fill="#0d1a1f" stroke="#b9eed7" stroke-opacity="0.6">
+      <circle cx="396" cy="200" r="3.4"/><circle cx="396" cy="210" r="3.4"/><circle cx="396" cy="220" r="3.4"/>
+      <circle cx="418" cy="182" r="3.4"/><circle cx="418" cy="196" r="3.4"/><circle cx="418" cy="210" r="3.4"/><circle cx="418" cy="224" r="3.4"/>
+      <circle cx="440" cy="196" r="3.4"/><circle cx="440" cy="204" r="3.4"/><circle cx="440" cy="212" r="3.4"/>
+      <circle cx="462" cy="196" r="3.4"/><circle cx="462" cy="204" r="3.4"/><circle cx="462" cy="212" r="3.4"/>
+    </g>
+    <g fill="#eaf4ff"><circle cx="418" cy="182" r="1.5"/><circle cx="440" cy="204" r="1.5"/><circle cx="462" cy="212" r="1.5"/></g>
+
+    <g>
+      <rect x="500" y="96" width="84" height="8" rx="4" fill="#eaf4ff" fill-opacity="0.5"/>
+      <rect x="500" y="112" width="58" height="8" rx="4" fill="#b9eed7" fill-opacity="0.34"/>
+      <rect x="500" y="128" width="36" height="8" rx="4" fill="#b9eed7" fill-opacity="0.22"/>
+    </g>
+
+    <rect x="500" y="196" width="110" height="52" rx="14" fill="url(#glass)" stroke="#b9eed7" stroke-opacity="0.28"/>
+    <rect x="514" y="210" width="66" height="3" rx="1.5" fill="#b9eed7" fill-opacity="0.55"/>
+    <rect x="514" y="220" width="42" height="3" rx="1.5" fill="#b9eed7" fill-opacity="0.3"/>
+    <rect x="514" y="230" width="52" height="3" rx="1.5" fill="#b9eed7" fill-opacity="0.22"/>
+  </g>
+  <rect x="16.5" y="16.5" width="607" height="267" rx="17.5" fill="none" stroke="#b9eed7" stroke-opacity="0.18"/>
+</svg>

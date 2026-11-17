@@ -1,0 +1,3 @@
+- insert:
+    - id: codex-skin
+      name: '@local/codex-skin'
